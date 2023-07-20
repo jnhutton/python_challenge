@@ -16,9 +16,10 @@ with open(election_csv, newline="") as csvfile:
     csv_header = next(csvreader)
 
     for row in csvreader:
+        # Counting number of candidate
         count = count + 1
-
         candidate.append(row[2])
+        
     # x = counts amount of unique candidates
     for x in set(candidate):
         unique_candidate.append(x)
