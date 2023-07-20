@@ -26,28 +26,29 @@ with open(budget_csv, newline="") as csvfile:
       profit_loss.append(row[1])
       total_profit_loss = total_profit_loss + int(row[1])
 
-      #Calculate the average monthly change in profit/losses. 
-      #Then calulate the average change in profit/losses.
+      # Calculate the average monthly change in profit/losses. 
+      # Then calulate the average change in profit/losses.
       end_profit_loss = int(row[1])
       monthly_change_profit_loss = end_profit_loss - start_profit_loss
 
-      #Store the monthly change
+      # Store the monthly change
       monthly_change.append(monthly_change_profit_loss)
 
       total_change_profit_loss = total_change_profit_loss + monthly_change_profit_loss
       start_profit_loss = end_profit_loss
 
-      #Calculate the average change in profit/losses
+      # Calculate the average change in profit/losses
       average_change_profit_loss = (total_change_profit_loss/count)
       
-      #Identify the maxumim and the minimum monthly change in profit/losses 
-      #Also, the dates where the maximum and minimum changes occurred
+      # Identify the maxumim and the minimum monthly change in profit/losses 
+      # Also, the dates where the maximum and minimum changes occurred
       greatest_increase_profit_loss = max(monthly_change)
       greatest_decrease_profit_loss = min(monthly_change)
 
       greatest_increase_date = date[monthly_change.index(greatest_increase_profit_loss)]
       greatest_decrease_date = date[monthly_change.index(greatest_decrease_profit_loss)]
-      
+    
+    # Print out results
     print("----------------------------------------------------------")
     print("Financial Analysis")
     print("----------------------------------------------------------")
@@ -58,6 +59,7 @@ with open(budget_csv, newline="") as csvfile:
     print("Greatest Decrease in Profits: " + str(greatest_decrease_date) + " ($" + str(greatest_decrease_profit_loss)+ ")")
     print("----------------------------------------------------------")
 
+    # Create txt file of results
     f = open('analysis.txt', 'w')
     f.write("----------------------------------------------------------\n")
     f.write("Financial Analysis" + "\n")
